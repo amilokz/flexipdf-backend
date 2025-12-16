@@ -6,6 +6,7 @@ from PyPDF2 import PdfReader, PdfWriter
 import os
 import datetime
 import traceback
+from mangum import Mangum  # <-- new
 
 app = Flask(__name__)
 CORS(app)
@@ -19,13 +20,11 @@ os.makedirs(app.config['OUTPUT_FOLDER'], exist_ok=True)
 # ====== Initialize Chatbot ======
 chatbot = AliChatbot()
 
-
 def timestamped_filename(filename):
     name, ext = os.path.splitext(filename)
     return f"{name}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}{ext}"
 
-
-# ====== API ROOT ======
+# ====== API ROUTES ======
 @app.route('/api/')
 def api_home():
     return jsonify({
@@ -42,7 +41,6 @@ def api_home():
             "/api/convert/split-pdf"
         ]
     })
-
 
 # ====== Chatbot ======
 @app.route('/api/chat', methods=['POST'])
@@ -212,3 +210,6 @@ def download(filename):
     if os.path.exists(path):
         return send_file(path, as_attachment=True)
     return jsonify({"status": "error", "message": "File not found"}), 404
+
+
+handler = Mangum(app)
