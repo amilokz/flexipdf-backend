@@ -94,23 +94,7 @@ def pdf_to_word_route():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 # ====== WORD → PDF ======
-@app.route('/api/convert/word-to-pdf', methods=['POST'])
-def word_to_pdf_route():
-    try:
-        file = request.files['file']
-        in_path = os.path.join(UPLOAD_FOLDER, timestamped_filename(file.filename))
-        file.save(in_path)
 
-        out_path = os.path.join(
-            OUTPUT_FOLDER,
-            os.path.basename(in_path).replace('.docx', '.pdf')
-        )
-
-        word_to_pdf(in_path, out_path)
-        return jsonify({"status": "success", "download_url": f"/api/download/{os.path.basename(out_path)}"})
-    except Exception as e:
-        traceback.print_exc()
-        return jsonify({"status": "error", "message": str(e)}), 500
 
 # ====== PDF → IMAGES ======
 @app.route('/api/convert/pdf-to-images', methods=['POST'])

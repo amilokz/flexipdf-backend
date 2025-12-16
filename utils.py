@@ -1,5 +1,4 @@
 from pdf2docx import Converter
-from docx2pdf import convert
 from pdf2image import convert_from_path
 from PIL import Image
 import os
@@ -19,22 +18,7 @@ def pdf_to_word(input_path, output_path):
         print(f"[ERROR] PDF to Word conversion failed: {e}")
         raise e
 
-def word_to_pdf(input_path, output_path):
-    """
-    Convert a Word (.docx) file to PDF using docx2pdf.
-    Works only on Windows.
-    """
-    try:
-        # Ensure output folder exists
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        
-        # Convert Word to PDF
-        convert(input_path, output_path)
-        print(f"[SUCCESS] Word converted to PDF: {output_path}")
-        return True
-    except Exception as e:
-        print("[ERROR] Word to PDF conversion failed:", e)
-        raise e
+
 
 
 def pdf_to_images(input_path, output_folder, dpi=200):
