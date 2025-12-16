@@ -6,23 +6,31 @@ from PyPDF2 import PdfReader, PdfWriter
 import os
 import datetime
 import traceback
-from mangum import Mangum  # <-- new
 
 app = Flask(__name__)
 CORS(app)
 
 # ====== Folder Setup ======
-app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['OUTPUT_FOLDER'] = 'outputs'
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-os.makedirs(app.config['OUTPUT_FOLDER'], exist_ok=True)
+UPLOAD_FOLDER = 'uploads'
+OUTPUT_FOLDER = 'outputs'
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['OUTPUT_FOLDER'] = OUTPUT_FOLDER
+
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 # ====== Initialize Chatbot ======
 chatbot = AliChatbot()
 
+# ====== Helpers ======
 def timestamped_filename(filename):
     name, ext = os.path.splitext(filename)
     return f"{name}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}{ext}"
+
+def get_file_path(folder, filename):
+    path = os.path.join(folder, filename)
+    return path if os.path.exists(path) else None
 
 # ====== API ROUTES ======
 @app.route('/api/')
@@ -57,28 +65,25 @@ def chat():
         traceback.print_exc()
         return jsonify({"status": "error", "reply": str(e)}), 500
 
-
 @app.route('/api/chat/history', methods=['GET'])
 def chat_history():
     return jsonify({"status": "success", "history": chatbot.data.get("conversations", [])})
-
 
 @app.route('/api/chat/clear', methods=['DELETE'])
 def clear_history():
     chatbot.reset_memory()
     return jsonify({"status": "success", "message": "Chat cleared"})
 
-
 # ====== PDF → WORD ======
 @app.route('/api/convert/pdf-to-word', methods=['POST'])
 def pdf_to_word_route():
     try:
         file = request.files['file']
-        in_path = os.path.join(app.config['UPLOAD_FOLDER'], timestamped_filename(file.filename))
+        in_path = os.path.join(UPLOAD_FOLDER, timestamped_filename(file.filename))
         file.save(in_path)
 
         out_path = os.path.join(
-            app.config['OUTPUT_FOLDER'],
+            OUTPUT_FOLDER,
             os.path.basename(in_path).replace('.pdf', '.docx')
         )
 
@@ -88,17 +93,16 @@ def pdf_to_word_route():
         traceback.print_exc()
         return jsonify({"status": "error", "message": str(e)}), 500
 
-
 # ====== WORD → PDF ======
 @app.route('/api/convert/word-to-pdf', methods=['POST'])
 def word_to_pdf_route():
     try:
         file = request.files['file']
-        in_path = os.path.join(app.config['UPLOAD_FOLDER'], timestamped_filename(file.filename))
+        in_path = os.path.join(UPLOAD_FOLDER, timestamped_filename(file.filename))
         file.save(in_path)
 
         out_path = os.path.join(
-            app.config['OUTPUT_FOLDER'],
+            OUTPUT_FOLDER,
             os.path.basename(in_path).replace('.docx', '.pdf')
         )
 
@@ -108,23 +112,21 @@ def word_to_pdf_route():
         traceback.print_exc()
         return jsonify({"status": "error", "message": str(e)}), 500
 
-
 # ====== PDF → IMAGES ======
 @app.route('/api/convert/pdf-to-images', methods=['POST'])
 def pdf_to_images_route():
     try:
         file = request.files['file']
-        in_path = os.path.join(app.config['UPLOAD_FOLDER'], timestamped_filename(file.filename))
+        in_path = os.path.join(UPLOAD_FOLDER, timestamped_filename(file.filename))
         file.save(in_path)
 
-        images = pdf_to_images(in_path, app.config['OUTPUT_FOLDER'])
+        images = pdf_to_images(in_path, OUTPUT_FOLDER)
         urls = [f"/api/download/{os.path.basename(p)}" for p in images]
 
         return jsonify({"status": "success", "images": urls})
     except Exception as e:
         traceback.print_exc()
         return jsonify({"status": "error", "message": str(e)}), 500
-
 
 # ====== IMAGES → PDF ======
 @app.route('/api/convert/images-to-pdf', methods=['POST'])
@@ -134,19 +136,18 @@ def images_to_pdf_route():
         paths = []
 
         for f in files:
-            p = os.path.join(app.config['UPLOAD_FOLDER'], timestamped_filename(f.filename))
+            p = os.path.join(UPLOAD_FOLDER, timestamped_filename(f.filename))
             f.save(p)
             paths.append(p)
 
         out_name = f"images_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
-        out_path = os.path.join(app.config['OUTPUT_FOLDER'], out_name)
+        out_path = os.path.join(OUTPUT_FOLDER, out_name)
 
         images_to_pdf(paths, out_path)
         return jsonify({"status": "success", "download_url": f"/api/download/{out_name}"})
     except Exception as e:
         traceback.print_exc()
         return jsonify({"status": "error", "message": str(e)}), 500
-
 
 # ====== MERGE PDF ======
 @app.route('/api/convert/merge-pdf', methods=['POST'])
@@ -156,14 +157,14 @@ def merge_pdf():
         writer = PdfWriter()
 
         for f in files:
-            p = os.path.join(app.config['UPLOAD_FOLDER'], timestamped_filename(f.filename))
+            p = os.path.join(UPLOAD_FOLDER, timestamped_filename(f.filename))
             f.save(p)
             reader = PdfReader(p)
             for page in reader.pages:
                 writer.add_page(page)
 
         out_name = f"merged_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
-        out_path = os.path.join(app.config['OUTPUT_FOLDER'], out_name)
+        out_path = os.path.join(OUTPUT_FOLDER, out_name)
 
         with open(out_path, "wb") as fp:
             writer.write(fp)
@@ -173,13 +174,12 @@ def merge_pdf():
         traceback.print_exc()
         return jsonify({"status": "error", "message": str(e)}), 500
 
-
 # ====== SPLIT PDF ======
 @app.route('/api/convert/split-pdf', methods=['POST'])
 def split_pdf():
     try:
         file = request.files['file']
-        p = os.path.join(app.config['UPLOAD_FOLDER'], timestamped_filename(file.filename))
+        p = os.path.join(UPLOAD_FOLDER, timestamped_filename(file.filename))
         file.save(p)
 
         reader = PdfReader(p)
@@ -190,7 +190,7 @@ def split_pdf():
             writer.add_page(page)
 
             name = f"page_{i+1}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
-            out = os.path.join(app.config['OUTPUT_FOLDER'], name)
+            out = os.path.join(OUTPUT_FOLDER, name)
 
             with open(out, "wb") as fp:
                 writer.write(fp)
@@ -202,14 +202,14 @@ def split_pdf():
         traceback.print_exc()
         return jsonify({"status": "error", "message": str(e)}), 500
 
-
 # ====== DOWNLOAD ======
 @app.route('/api/download/<filename>')
 def download(filename):
-    path = os.path.join(app.config['OUTPUT_FOLDER'], filename)
+    path = os.path.join(OUTPUT_FOLDER, filename)
     if os.path.exists(path):
         return send_file(path, as_attachment=True)
     return jsonify({"status": "error", "message": "File not found"}), 404
 
-
-handler = Mangum(app)
+# ====== MAIN ENTRY ======
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)
