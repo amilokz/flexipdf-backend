@@ -1,0 +1,284 @@
+{
+  "user_name": null,
+  "country": null,
+  "city": null,
+  "language": null,
+  "facts": {
+    "pdf": "converter",
+    "math": "a book",
+    "urdu": "a language",
+    "prime minster": "imran khan"
+  },
+  "relationships": {},
+  "conversations": [
+    {
+      "user": "hi",
+      "ai": "Hey friend! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-10-26 02:55:27"
+    },
+    {
+      "user": "how are you",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-10-26 02:55:44"
+    },
+    {
+      "user": "my name is ali",
+      "ai": "Nice to meet you, Ali! 💫 I'll remember your name.",
+      "time": "2025-10-26 02:55:56"
+    },
+    {
+      "user": "hi",
+      "ai": "Hey friend! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-10-26 07:22:56"
+    },
+    {
+      "user": "how are you",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-10-26 07:23:02"
+    },
+    {
+      "user": "my name is ali",
+      "ai": "Nice to meet you, Ali! 💫 I'll remember your name.",
+      "time": "2025-10-26 07:23:14"
+    },
+    {
+      "user": "hi",
+      "ai": "Hey Ali! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-10-26 07:38:30"
+    },
+    {
+      "user": "hi",
+      "ai": "Hey friend! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-10-30 04:00:10"
+    },
+    {
+      "user": "how are u",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-10-30 04:00:15"
+    },
+    {
+      "user": "what is your name",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-10-30 04:00:26"
+    },
+    {
+      "user": "my name is ali",
+      "ai": "Nice to meet you, Ali! 💫 I'll remember your name.",
+      "time": "2025-10-30 04:00:35"
+    },
+    {
+      "user": "what is my name",
+      "ai": "Your user name is Ali 🌟",
+      "time": "2025-10-30 04:00:50"
+    },
+    {
+      "user": "what is your name",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:01:05"
+    },
+    {
+      "user": "ali",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:01:16"
+    },
+    {
+      "user": "what is flexipdf",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:01:32"
+    },
+    {
+      "user": "hi",
+      "ai": "Hey Ali! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-10-30 04:05:05"
+    },
+    {
+      "user": "what stand for flexipdf",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:05:14"
+    },
+    {
+      "user": "what stand for pdf",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:05:33"
+    },
+    {
+      "user": "what stand for pdf",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:07:18"
+    },
+    {
+      "user": "pdf is converter",
+      "ai": "Got it! I’ve learned that **pdf** is **converter** 🧠",
+      "time": "2025-10-30 04:07:29"
+    },
+    {
+      "user": "what is pdf",
+      "ai": "Pdf is converter 💡",
+      "time": "2025-10-30 04:07:41"
+    },
+    {
+      "user": "what is pdf",
+      "ai": "Pdf is converter 💡",
+      "time": "2025-10-30 04:07:50"
+    },
+    {
+      "user": "good",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:07:56"
+    },
+    {
+      "user": "what is math",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:08:16"
+    },
+    {
+      "user": "math is a book",
+      "ai": "Got it! I’ve learned that **math** is **a book** 🧠",
+      "time": "2025-10-30 04:08:25"
+    },
+    {
+      "user": "what is math",
+      "ai": "Math is a book 💡",
+      "time": "2025-10-30 04:08:35"
+    },
+    {
+      "user": "what is urdu",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:08:56"
+    },
+    {
+      "user": "urdu is a language",
+      "ai": "Got it! I’ve learned that **urdu** is **a language** 🧠",
+      "time": "2025-10-30 04:09:06"
+    },
+    {
+      "user": "what is urdu",
+      "ai": "Urdu is a language 💡",
+      "time": "2025-10-30 04:09:13"
+    },
+    {
+      "user": "who is pakistan primeminster",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:09:36"
+    },
+    {
+      "user": "prime minster is imran khan",
+      "ai": "Got it! I’ve learned that **prime minster** is **imran khan** 🧠",
+      "time": "2025-10-30 04:09:59"
+    },
+    {
+      "user": "who is pakistan prime minster",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:10:20"
+    },
+    {
+      "user": "pakistan prime minster",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:10:35"
+    },
+    {
+      "user": "what is pakistan prime minster name",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:11:13"
+    },
+    {
+      "user": "imran khan",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:11:20"
+    },
+    {
+      "user": "pakistan prime minster name imran khan",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:11:34"
+    },
+    {
+      "user": "what is pdf",
+      "ai": "Pdf is converter 💡",
+      "time": "2025-10-30 04:11:49"
+    },
+    {
+      "user": "i love ui",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:18:44"
+    },
+    {
+      "user": "i love you",
+      "ai": "Hmm 🤔 interesting, Ali. Tell me more about that.",
+      "time": "2025-10-30 04:18:50"
+    },
+    {
+      "user": "hi",
+      "ai": "Hey friend! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-11-01 02:56:49"
+    },
+    {
+      "user": "hi",
+      "ai": "Hey friend! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-11-15 12:47:35"
+    },
+    {
+      "user": "how are u",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-11-15 12:47:49"
+    },
+    {
+      "user": "what is stand for pdf",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-11-15 12:48:05"
+    },
+    {
+      "user": "hi",
+      "ai": "Hey friend! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-11-15 12:48:13"
+    },
+    {
+      "user": "what is programming",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-11-15 12:48:27"
+    },
+    {
+      "user": "nope",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-11-15 12:48:31"
+    },
+    {
+      "user": "i love u",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-11-15 12:48:37"
+    },
+    {
+      "user": "are u rembember me",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-11-15 12:48:48"
+    },
+    {
+      "user": "fuck u",
+      "ai": "Hmm 🤔 interesting, friend. Tell me more about that.",
+      "time": "2025-11-15 12:48:57"
+    },
+    {
+      "user": "hi",
+      "ai": "Hey friend! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-11-15 12:52:07"
+    },
+    {
+      "user": "hi",
+      "ai": "Hey friend! 👋 I'm Ali — your FlexiPDF AI assistant. How can I help you today?",
+      "time": "2025-12-16 09:46:11"
+    }
+  ],
+  "flexipdf_knowledge": {
+    "pdf_to_word": "Convert PDF files into editable Word (.docx) documents.",
+    "word_to_pdf": "Convert Word (.docx) files into clean, printable PDF files.",
+    "pdf_to_image": "Export pages of a PDF into high-quality image files (PNG/JPG).",
+    "images_to_pdf": "Merge multiple images into a single PDF document.",
+    "merge_pdfs": "Combine multiple PDF files into a single PDF.",
+    "split_pdf": "Split a PDF into multiple smaller PDF files by page ranges.",
+    "compress_pdf": "Reduce PDF file size while keeping acceptable quality.",
+    "ocr_pdf": "(If available) Use OCR to recognize text inside scanned PDF pages.",
+    "ai_assistant": "I’m Ali — the built-in AI assistant that helps with FlexiPDF tasks and answers questions."
+  },
+  "meta": {
+    "created_at": "2025-10-26T02:54:57"
+  }
+}
