@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
-from utils import pdf_to_word, word_to_pdf, pdf_to_images, images_to_pdf
+# Remove word_to_pdf from import
+from utils import pdf_to_word, pdf_to_images, images_to_pdf
 from chatbot import AliChatbot
 from PyPDF2 import PdfReader, PdfWriter
 import os
